@@ -47,7 +47,7 @@ const list_attributes_api = {
             return {
                 method: "POST",
                 // prettier-ignore
-                resource: `${config.apiURL_V2}/${section}"}`,
+                resource: `${config.apiURL_V2}/${section}`,
                 params: {},
                 body: {
                     ...options.body,

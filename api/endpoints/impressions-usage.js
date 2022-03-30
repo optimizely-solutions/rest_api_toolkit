@@ -48,7 +48,13 @@ const impressionsUsage_api = {
             return {
                 method: "GET",
                 // prettier-ignore
-                resource: `${config.apiURL_V2}/${section}/${subSection}?account_id=${options?.accountId ? options.accountId : 0}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=100&usage_date_from="${options?.usageDateFrom ? options.usageDateFrom : todayDate}"&usage_date_to="${options?.usageDateTo ? options.usageDateTo : todayDate} "`,
+                resource: `${config.apiURL_V2}/${section}/${subSection}/${options?.accountId ? options.accountId : 0}?usage_date_from="${options?.usageDateFrom ? options.usageDateFrom : todayDate}"
+                &usage_date_to="${options?.usageDateTo ? options.usageDateTo : todayDate}"
+                &page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.page ? options.page : 100}
+                &platforms=${options?.platforms ? options.platforms : ["edge", "fullstack", "web"]}
+                &query=${options?.query ? options.query : ""}
+                &sort=${options?.sort ? options.sort : "impression_count"}
+                &order=${options?.order ? options.order : "desc"}`,
                 params: {},
                 body: null,
             };

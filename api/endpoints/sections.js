@@ -16,7 +16,7 @@ const sections_api = {
             return {
                 method: "GET",
                 // prettier-ignore
-                resource: `${config.apiURL_V2}/${section}/${options?.experimentId ? options.experimentId : 0}/${subSection}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=100`,
+                resource: `${config.apiURL_V2}/${section}/${options?.experimentId ? options.experimentId : 0}/${subSection}?page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
                 params: {},
                 body: null,
             };

@@ -12,7 +12,7 @@ const projects_api = {
             return {
                 method: "GET",
                 // prettier-ignore
-                resource: `${config.apiURL_V2}/${section}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=100`,
+                resource: `${config.apiURL_V2}/${section}?page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
                 params: {},
                 body: null,
             };

@@ -17,7 +17,7 @@ function checkingForValidDate(date) {
 
 const recommendations_api = {
     recommendations: {
-        read: (options = {}) => {
+        currentCatalogData: (options = {}) => {
             if (!options.date) {
                 throw new Error(
                     "A date is required to download a csv of current catalog data.");
@@ -39,6 +39,65 @@ const recommendations_api = {
                 method: "GET",
                 // prettier-ignore
                 resource: `${config.apiURL_V2}/${section}/${subSection}/"${options?.catalogId ? options.catalogId : ""}"/"${options?.date ? options.date : todayDate}"`,
+                params: {},
+                body: null,
+            };
+        },
+        computedRecommendationData: (options = {}) => {
+            if (!options.date) {
+                throw new Error(
+                    "A date is required to download a csv of computed recommendations output data.");
+            }
+
+            if (!checkingForValidDate(options.date)) {
+                throw new Error(
+                    "A valid formatted Date is needed to download a csv of computed recommendations output data."
+                );
+            }
+
+            if (!options.catalogId) {
+                throw new Error(
+                    "A catalog ID is required to download a csv of computed recommendations output data."
+                );
+            }
+
+            if (!options.recommenderId) {
+                throw new Error(
+                    "A recommender ID is required to download a csv of computed recommendations output data."
+
+                );
+            }
+
+            return {
+                method: "GET",
+                // prettier-ignore
+                resource: `${config.apiURL_V2}/${section}/${subSection}/"${options?.catalogId ? options.catalogId : ""}"/recommenders/"${options?.recommenderId ? options.recommenderId : ""}"/"${options?.date ? options.date : todayDate}"`,
+                params: {},
+                body: null,
+            };
+        },
+        summaryStatsData: (options = {}) => {
+            if (!options.date) {
+                throw new Error(
+                    "A date is required to download a csv with summary stats data.");
+            }
+
+            if (!checkingForValidDate(options.date)) {
+                throw new Error(
+                    "A valid formatted Date is needed to download a csv with summary stats data."
+                );
+            }
+
+            if (!options.catalogId) {
+                throw new Error(
+                    "A catalog ID is required to download a csv with summary stats data."
+                );
+            }
+
+            return {
+                method: "GET",
+                // prettier-ignore
+                resource: `${config.apiURL_V2}/${section}/${subSection}/"${options?.catalogId ? options.catalogId : ""}"/stats/"${options?.date ? options.date : todayDate}"`,
                 params: {},
                 body: null,
             };
