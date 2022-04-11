@@ -15,10 +15,7 @@ const campaigns_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          &page=${options?.linkPageIndex ? options.linkPageIndex : 1}
-          &per_page=${options?.perPage ? options.perPage : 100}`,
+        resource: `${config.apiURL_V2}/${section}?project_id=${options?.projectId ? options.projectId : 0}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
         params: {},
         body: null,
       };
@@ -35,8 +32,7 @@ const campaigns_api = {
       return {
         method: "POST",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?action=${options?.action ? options.action : "pause"}`,
+        resource: `${config.apiURL_V2}/${section}?action=${options?.action ? options.action : "pause"}`,
         params: {},
         body: {
           ...options.body,
@@ -73,7 +69,7 @@ const campaigns_api = {
       if (!options.campaignId) {
         throw new Error("An campaign ID is required to update a campaign.");
       }
-      
+
       if (!options.body) {
         throw new Error("A JSON payload representing the properties to update a campaign is required.");
       }
@@ -81,8 +77,7 @@ const campaigns_api = {
       return {
         method: "PATCH",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}/${options?.attributeId ? options.attributeId : 0}
-          &action=${options?.action ? options.action : "pause"}`,
+        resource: `${config.apiURL_V2}/${section}/${options?.attributeId ? options.attributeId : 0}&action=${options?.action ? options.action : "pause"}`,
         params: {},
         body: {
           ...options.body,

@@ -8,7 +8,17 @@ const section = "credentials";
 const credentials_api = {
   credentials: {
 
-  },
+    exportCredentials: (options = {}) => {
+
+      return {
+        method: "GET",
+        // prettier-ignore
+        resource: `${config.apiURL_V2}/export/credentials?duration="1h"`,
+        params: {},
+        body: null,
+      };
+    }
+  }
 };
 
 export default credentials_api;

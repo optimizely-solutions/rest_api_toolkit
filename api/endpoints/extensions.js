@@ -15,10 +15,7 @@ const extensions_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          &page=${options?.linkPageIndex ? options.linkPageIndex : 1}
-          &per_page=${options?.perPage ? options.perPage : 100}`,
+        resource: `${config.apiURL_V2}/${section}?project_id=${options?.projectId ? options.projectId : 0}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
         params: {},
         body: null,
       };
@@ -54,7 +51,7 @@ const extensions_api = {
         },
       };
     },
-    delete: (options = {}) => {   
+    delete: (options = {}) => {
       if (!options.extensionId) {
         throw new Error("An extension ID is required to delete an extension.");
       }
@@ -65,7 +62,7 @@ const extensions_api = {
         resource: `${config.apiURL_V2}/${section}/${options?.extensionId ? options.extensionId : 0}`,
         params: {},
         body: null,
-      };   
+      };
     },
     read: (options = {}) => {
       if (!options.extensionId) {
@@ -80,11 +77,11 @@ const extensions_api = {
         body: null,
       };
     },
-    update: (options = {}) => {     
+    update: (options = {}) => {
       if (!options.extensionId) {
         throw new Error("An extension ID is required to update an extension.");
       }
-      
+
       if (!options.body) {
         throw new Error("A JSON payload representing the properties to update an extension is required.");
       }
@@ -97,7 +94,7 @@ const extensions_api = {
         body: {
           ...options.body,
         },
-      };  
+      };
     },
   },
 };

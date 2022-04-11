@@ -15,10 +15,7 @@ const features_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          &page=${options?.linkPageIndex ? options.linkPageIndex : 1}
-          &per_page=${options?.perPage ? options.perPage : 100}`,
+        resource: `${config.apiURL_V2}/${section}?project_id=${options?.projectId ? options.projectId : 0}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
         params: {},
         body: null,
       };
@@ -46,7 +43,7 @@ const features_api = {
         },
       };
     },
-    delete: (options = {}) => {     
+    delete: (options = {}) => {
       if (!options.featureId) {
         throw new Error("A feature ID is required to delete a feature.");
       }
@@ -57,7 +54,7 @@ const features_api = {
         resource: `${config.apiURL_V2}/${section}/${options?.featureId ? options.featureId : 0}`,
         params: {},
         body: null,
-      };    
+      };
     },
     read: (options = {}) => {
       if (!options.featureId) {
@@ -76,7 +73,7 @@ const features_api = {
       if (!options.featureId) {
         throw new Error("A feature ID is required to update a feature.");
       }
-      
+
       if (!options.body) {
         throw new Error("A JSON payload representing the properties to update a feature is required.");
       }
@@ -89,7 +86,7 @@ const features_api = {
         body: {
           ...options.body,
         },
-      };     
+      };
     },
   },
 };

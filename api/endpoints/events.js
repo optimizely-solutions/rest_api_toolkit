@@ -15,11 +15,7 @@ const events_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          ${options?.includeClassic ? 'include_classic=' + options.includeClassic : ''}
-          &page=${options?.linkPageIndex ? options.linkPageIndex : 1}
-          &per_page=${options?.perPage ? options.perPage : 100}`,
+        resource: `${config.apiURL_V2}/${section}?project_id=${options?.projectId ? options.projectId : 0}${options?.includeClassic ? 'include_classic=' + options.includeClassic : ''}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
         params: {},
         body: null,
       };
@@ -32,9 +28,7 @@ const events_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?event_id=${options?.projectId ? options.projectId : 0}
-          ${options?.includeClassic ? 'include_classic=' + options.includeClassic : ''}`,
+        resource: `${config.apiURL_V2}/${section}?event_id=${options?.projectId ? options.projectId : 0}${options?.includeClassic ? 'include_classic=' + options.includeClassic : ''}`,
         params: {},
         body: null,
       };
@@ -55,9 +49,7 @@ const events_api = {
       return {
         method: "POST",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/projects/
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          /custom_events`,
+        resource: `${config.apiURL_V2}/projects/?project_id=${options?.projectId ? options.projectId : 0}/custom_events`,
         params: {},
         body: {
           ...options.body,
@@ -88,9 +80,7 @@ const events_api = {
       return {
         method: "POST",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?page_id=${options?.pageId ? options.pageId : 0}
-          /events`,
+        resource: `${config.apiURL_V2}/${section}?page_id=${options?.pageId ? options.pageId : 0}/events`,
         params: {},
         body: {
           ...options.body,

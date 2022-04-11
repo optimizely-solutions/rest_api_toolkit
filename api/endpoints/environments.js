@@ -15,10 +15,7 @@ const environments_api = {
       return {
         method: "GET",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/${section}
-          ?project_id=${options?.projectId ? options.projectId : 0}
-          &page=${options?.linkPageIndex ? options.linkPageIndex : 1}
-          &per_page=${options?.perPage ? options.perPage : 100}`,
+        resource: `${config.apiURL_V2}/${section}?project_id=${options?.projectId ? options.projectId : 0}&page=${options?.linkPageIndex ? options.linkPageIndex : 1}&per_page=${options?.perPage ? options.perPage : 100}`,
         params: {},
         body: null,
       };
@@ -35,7 +32,7 @@ const environments_api = {
       if (!options.body.key) {
         throw new Error("An key is required in the JSON payload.");
       }
-      
+
       if (!options.body.name) {
         throw new Error("An name is required in the JSON payload.");
       }
@@ -80,7 +77,7 @@ const environments_api = {
       if (!options.body) {
         throw new Error("A JSON payload representing the environment that should be updated is required.");
       }
-      
+
       if (!options.environmentId) {
         throw new Error("An environment ID is required to update an environment.");
       }
