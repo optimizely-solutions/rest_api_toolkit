@@ -57,8 +57,39 @@ const events_api = {
       };
     },
     deleteCustom: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to delete a custom event.");
+      }
+      if (!options.eventId) {
+        throw new Error("An event ID is required to delete a custom event.");
+      }
+
+      return {
+        method: "DEL",
+        // prettier-ignore
+        resource: `${config.apiURL_V2}/projects/${options.projectId}/custom_events/${options.eventId}`,
+        params: {},
+        body: null,
+      };
     },
     updateCustom: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to update a custom event.");
+      }
+
+      if (!options.eventId) {
+        throw new Error("An event ID is required to update a custom event.")
+      }
+
+      return {
+        method: "PATCH",
+        // prettier-ignore
+        resource: `${config.apiURL_V2}/projects/${options.projectId}/custom_events/${options.eventId}`,
+        params: {},
+        body: {
+          ...options.body,
+        },
+      };
     },
     createInPage: (options = {}) => {
       if (!options.pageId) {
@@ -88,10 +119,46 @@ const events_api = {
       };
     },
     deleteInPage: (options = {}) => {
+      if (!options.pageId) {
+        throw new Error("A page ID is required to delete an In-page event.");
+      }
+
+      if (!options.eventId) {
+        throw new Error("An event ID is required to delete an In-page event.");
+      }
+
+      return {
+        method: "DEL",
+        // prettier-ignore
+        resource: `${config.apiURL_V2}/pages/${options.pageId}/${section}/${options.eventId}`,
+        params: {},
+        body: null,
+      };
     },
     updateInPage: (options = {}) => {
-    },
-  },
+      if (!options.pageId) {
+        throw new Error("A page ID is required to update an In-page event.");
+      }
+
+      if (!options.eventId) {
+        throw new Error("An event ID is required to update an In-page event.");
+      }
+
+      if (!options.body) {
+        throw new Error("A body in JSON format the requested update is required to update an In-page event.");
+      }
+
+      return {
+        method: "PATCH",
+        // prettier-ignore
+        resource: `${config.apiURL_V2}/pages/${options.pageId}/${section}/${options.eventId}`,
+        params: {},
+        body: {
+          ...options.body,
+        },
+      };
+    }
+  }
 };
 
 export default events_api;
