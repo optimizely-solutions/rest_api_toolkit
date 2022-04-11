@@ -89,8 +89,39 @@ const environments_api = {
         params: {},
         body: null,
       };
+    },
+    listV1: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to pull a list of V1 environments");
+      }
+
+      return {
+        method: "GET",
+        // prettier-ignore
+        resource: `${config.apiURL_FlagsV1}/projects/${options.projectId}/${section}`,
+        params: {},
+        body: null,
+      };
+    },
+    patchV1: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to create/update an environment");
+      }
+
+      if (!options.body) {
+        throw new Error("A JSON payload representing the environment that should be created/updated is required.");
+      }
+
+      return {
+        method: "PATCH",
+        // prettier-ignore
+        resource: `${config.apiURL_FlagsV1}/projects/${options.projectId}/${section}`,
+        params: {},
+        body: null,
+      };
     }
   },
+
 };
 
 export default environments_api;
