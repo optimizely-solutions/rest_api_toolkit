@@ -21,6 +21,7 @@ import reports from "./endpoints/reports.js";
 import sections from "./endpoints/sections.js";
 import subjectAccessRequest from "./endpoints/subject-access-requests.js";
 import flags from "./endpoints/flags.js";
+import rulesets from "/endpoints/rulesets.js"
 
 
 
@@ -47,7 +48,8 @@ export class OptlyRestToolkit {
       ...reports,
       ...sections,
       ...subjectAccessRequest,
-      ...flags
+      ...flags,
+      ...rulesets
     };
 
     if (!configOptions.token) {
@@ -356,6 +358,17 @@ export class OptlyRestToolkit {
     }
   }
 
+  async rulesets(method = "", options = {}) {
+    options.projectId = this.projectId;
+    const existingEndpoint = this.endpoints.rulesets[method];
+
+    if (existingEndpoint) {
+      const endpoint = existingEndpoint(options);
+      let result = await this.request(endpoint);
+      //console.log(result);
+      return result;
+    }
+  }
 
 }
 
