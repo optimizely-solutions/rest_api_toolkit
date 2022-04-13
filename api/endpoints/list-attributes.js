@@ -20,19 +20,19 @@ const list_attributes_api = {
             };
         },
         create: (options = {}) => {
-            if (!options.projectId) {
+            if (!options.body.projectId) {
                 throw new Error(
                     "A project ID is required to create a new list attribute."
                 )
             }
 
-            if (!options.keyField) {
+            if (!options.body.keyField) {
                 throw new Error(
                     "A key field is required to create a new list attribute."
                 )
             }
 
-            if (!options.name) {
+            if (!options.body.name) {
                 throw new Error(
                     "A name is required to create a new list attribute."
                 )

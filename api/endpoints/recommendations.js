@@ -19,20 +19,15 @@ const recommendations_api = {
     recommendations: {
         currentCatalogData: (options = {}) => {
             if (!options.date) {
-                throw new Error(
-                    "A date is required to download a csv of current catalog data.");
+                throw new Error("A date is required to download a csv of current catalog data.");
             }
 
             if (!checkingForValidDate(options.date)) {
-                throw new Error(
-                    "A valid formatted Date is needed to download a csv of current catalog data."
-                );
+                throw new Error("A valid formatted Date is needed to download a csv of current catalog data.");
             }
 
             if (!options.catalogId) {
-                throw new Error(
-                    "A catalog ID is required to download a csv of current catalog data."
-                );
+                throw new Error("A catalog ID is required to download a csv of current catalog data.");
             }
 
             return {
@@ -45,27 +40,19 @@ const recommendations_api = {
         },
         computedRecommendationData: (options = {}) => {
             if (!options.date) {
-                throw new Error(
-                    "A date is required to download a csv of computed recommendations output data.");
+                throw new Error("A date is required to download a csv of computed recommendations output data.");
             }
 
             if (!checkingForValidDate(options.date)) {
-                throw new Error(
-                    "A valid formatted Date is needed to download a csv of computed recommendations output data."
-                );
+                throw new Error("A valid formatted Date is needed to download a csv of computed recommendations output data.");
             }
 
             if (!options.catalogId) {
-                throw new Error(
-                    "A catalog ID is required to download a csv of computed recommendations output data."
-                );
+                throw new Error("A catalog ID is required to download a csv of computed recommendations output data.");
             }
 
             if (!options.recommenderId) {
-                throw new Error(
-                    "A recommender ID is required to download a csv of computed recommendations output data."
-
-                );
+                throw new Error("A recommender ID is required to download a csv of computed recommendations output data.");
             }
 
             return {
@@ -78,20 +65,15 @@ const recommendations_api = {
         },
         summaryStatsData: (options = {}) => {
             if (!options.date) {
-                throw new Error(
-                    "A date is required to download a csv with summary stats data.");
+                throw new Error("A date is required to download a csv with summary stats data.");
             }
 
             if (!checkingForValidDate(options.date)) {
-                throw new Error(
-                    "A valid formatted Date is needed to download a csv with summary stats data."
-                );
+                throw new Error("A valid formatted Date is needed to download a csv with summary stats data.");
             }
 
             if (!options.catalogId) {
-                throw new Error(
-                    "A catalog ID is required to download a csv with summary stats data."
-                );
+                throw new Error("A catalog ID is required to download a csv with summary stats data.");
             }
 
             return {

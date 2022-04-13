@@ -29,26 +29,22 @@ const ruleset_api = {
         update: (options = {}) => {
             if (!options.projectId) {
                 throw new Error(
-                    "A project ID is required to update a ruleset."
-                )
+                    "A project ID is required to update a ruleset.");
             }
 
             if (!options.flagKey) {
                 throw new Error(
-                    "A flag_key is required to update a ruleset."
-                )
+                    "A flag_key is required to update a ruleset.");
             }
 
             if (!options.environmentKey) {
                 throw new Error(
-                    "An environment_key is required to update a ruleset."
-                )
+                    "An environment_key is required to update a ruleset.");
             }
 
             if (!options.body) {
                 throw new Error(
-                    "A JSON payload representing the ruleset that should be updated is required."
-                );
+                    "A JSON payload representing the ruleset that should be updated is required.");
             }
 
             return {
@@ -65,20 +61,17 @@ const ruleset_api = {
         enable: (options = {}) => {
             if (!options.projectId) {
                 throw new Error(
-                    "A project ID is required to enable a ruleset."
-                )
+                    "A project ID is required to enable a ruleset.");
             }
 
             if (!options.flagKey) {
                 throw new Error(
-                    "A flag_key is required to enable a ruleset."
-                )
+                    "A flag_key is required to enable a ruleset.");
             }
 
             if (!options.environmentKey) {
                 throw new Error(
-                    "An environment_key is required to enable a ruleset."
-                )
+                    "An environment_key is required to enable a ruleset.");
             }
 
             return {
@@ -94,20 +87,17 @@ const ruleset_api = {
         disable: (options = {}) => {
             if (!options.projectId) {
                 throw new Error(
-                    "A project ID is required to disable a ruleset."
-                )
+                    "A project ID is required to disable a ruleset.");
             }
 
             if (!options.flagKey) {
                 throw new Error(
-                    "A flag_key is required to disable a ruleset."
-                )
+                    "A flag_key is required to disable a ruleset.");
             }
 
             if (!options.environmentKey) {
                 throw new Error(
-                    "An environment_key is required to disable a ruleset."
-                )
+                    "An environment_key is required to disable a ruleset.");
             }
 
             return {

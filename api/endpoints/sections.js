@@ -23,21 +23,15 @@ const sections_api = {
         },
         create: (options = {}) => {
             if (!options.experimentId) {
-                throw new Error(
-                    "An experiment ID is required to create a section to a multivariate test."
-                )
-            }
-
-            if (!options.variations) {
-                throw new Error(
-                    "Variation(s) are required to create a section to a multivariate test."
-                )
+                throw new Error("An experiment ID is required to create a section to a multivariate test.");
             }
 
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the new section to a multivariate test that should be created is required."
-                );
+                throw new Error("A JSON payload representing the new section to a multivariate test that should be created is required.");
+            }
+
+            if (!options.body.variations) {
+                throw new Error("Variation(s) are required to create a section to a multivariate test.");
             }
 
             return {
@@ -52,15 +46,11 @@ const sections_api = {
         },
         delete: (options = {}) => {
             if (!options.sectionId) {
-                throw new Error(
-                    "A section ID is required to delete a section of a multivariate test."
-                );
+                throw new Error("A section ID is required to delete a section of a multivariate test.");
             }
 
             if (!options.experimentId) {
-                throw new Error(
-                    "An experiment ID is required to delete a section of a multivariate test."
-                );
+                throw new Error("An experiment ID is required to delete a section of a multivariate test.");
             }
 
             return {
@@ -98,9 +88,7 @@ const sections_api = {
             }
 
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the properties to update the section of a multivariate test is required."
-                );
+                throw new Error("A JSON payload representing the properties to update the section of a multivariate test is required.");
             }
 
             return {

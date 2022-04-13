@@ -19,33 +19,33 @@ const subjectAccessRequest_api = {
             };
         },
         create: (options = {}) => {
-            if (!options.dataType) {
-                throw new Error(
-                    "A data type is required to create a Subject Access Request."
-                )
-            }
-
-            if (!options.identifier) {
-                throw new Error(
-                    "An identifier is required to create a Subject Access Request."
-                )
-            }
-
-            if (!options.identifierType) {
-                throw new Error(
-                    "An identifier type is required to create a Subject Access Request."
-                )
-            }
-
-            if (!options.requestType) {
-                throw new Error(
-                    "A request type is required to create a Subject Access Request."
-                )
-            }
-
             if (!options.body) {
                 throw new Error(
                     "A JSON payload representing the new Subject Access Request that should be created is required."
+                );
+            }
+
+            if (!options.body.dataType) {
+                throw new Error(
+                    "A data type is required to create a Subject Access Request."
+                );
+            }
+
+            if (!options.body.identifier) {
+                throw new Error(
+                    "An identifier is required to create a Subject Access Request."
+                );
+            }
+
+            if (!options.body.identifierType) {
+                throw new Error(
+                    "An identifier type is required to create a Subject Access Request."
+                );
+            }
+
+            if (!options.body.requestType) {
+                throw new Error(
+                    "A request type is required to create a Subject Access Request."
                 );
             }
 

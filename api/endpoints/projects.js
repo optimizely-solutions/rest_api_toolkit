@@ -18,16 +18,12 @@ const projects_api = {
             };
         },
         create: (options = {}) => {
-            if (!options.name) {
-                throw new Error(
-                    "A name is required to create a project."
-                )
+            if (!options.body) {
+                throw new Error("A JSON payload representing the new project that should be created is required.");
             }
 
-            if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the new project that should be created is required."
-                );
+            if (!options.body.name) {
+                throw new Error("A name is required to create a project.");
             }
 
             return {
@@ -59,9 +55,7 @@ const projects_api = {
             }
 
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the properties to update the project is required."
-                );
+                throw new Error("A JSON payload representing the properties to update the project is required.");
             }
 
             return {

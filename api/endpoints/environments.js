@@ -90,9 +90,9 @@ const environments_api = {
         body: null,
       };
     },
-    listV1: (options = {}) => {
+    listFlags: (options = {}) => {
       if (!options.projectId) {
-        throw new Error("A project ID is required to pull a list of V1 environments");
+        throw new Error("A project ID is required to pull a list of flag environments");
       }
 
       return {
@@ -103,9 +103,9 @@ const environments_api = {
         body: null,
       };
     },
-    patchV1: (options = {}) => {
+    patchFlags: (options = {}) => {
       if (!options.projectId) {
-        throw new Error("A project ID is required to create/update an environment");
+        throw new Error("A project ID is required to create/update a flag environment");
       }
 
       if (!options.body) {

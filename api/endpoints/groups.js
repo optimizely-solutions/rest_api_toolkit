@@ -21,13 +21,13 @@ const groups_api = {
             };
         },
         create: (options = {}) => {
-            if (!options.projectId) {
+            if (!options.body.projectId) {
                 throw new Error(
                     "A project ID is required to create a group."
                 )
             }
 
-            if (!options.groupName) {
+            if (!options.body.name) {
                 throw new Error(
                     "A group name is required to create a group."
                 )

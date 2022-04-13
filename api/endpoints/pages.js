@@ -21,28 +21,20 @@ const pages_api = {
             };
         },
         create: (options = {}) => {
-            if (!options.projectId) {
-                throw new Error(
-                    "A project ID is required to create a page."
-                )
-            }
-
-            if (!options.pageName) {
-                throw new Error(
-                    "A page name is required to create a page."
-                )
-            }
-
-            if (!options.editUrl) {
-                throw new Error(
-                    "A edit URL is required to create a page."
-                )
-            }
-
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the new page that should be created is required."
-                );
+                throw new Error("A JSON payload representing the new page that should be created is required.");
+            }
+
+            if (!options.body.projectId) {
+                throw new Error("A project ID is required to create a page.");
+            }
+
+            if (!options.body.pageName) {
+                throw new Error("A page name is required to create a page.");
+            }
+
+            if (!options.body.editUrl) {
+                throw new Error("A edit URL is required to create a page.");
             }
 
             return {
@@ -57,9 +49,7 @@ const pages_api = {
         },
         delete: (options = {}) => {
             if (!options.pageId) {
-                throw new Error(
-                    "A page ID is required to delete a page."
-                );
+                throw new Error("A page ID is required to delete a page.");
             }
 
             return {
@@ -89,9 +79,7 @@ const pages_api = {
             }
 
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the properties to update the page is required."
-                );
+                throw new Error("A JSON payload representing the properties to update the page is required.");
             }
 
             return {

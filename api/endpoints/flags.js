@@ -20,18 +20,15 @@ const flags_api = {
         },
         create: (options = {}) => {
             if (!options.projectId) {
-                throw new Error(
-                    "A project ID is required to create a flag.");
-            }
-
-            if (!options.key) {
-                throw new Error(
-                    "A key is required to create a flag.");
+                throw new Error("A project ID is required to create a flag.");
             }
 
             if (!options.body) {
-                throw new Error(
-                    "A JSON payload representing the new flag that should be created is required.");
+                throw new Error("A JSON payload representing the new flag that should be created is required.");
+            }
+
+            if (!options.body.key) {
+                throw new Error("A key is required to create a flag.");
             }
 
             return {

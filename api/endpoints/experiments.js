@@ -24,6 +24,10 @@ const experiments_api = {
         throw new Error("A JSON payload representing the new experiment that should be created is required.");
       }
 
+      if (!options.body.projectId) {
+        throw new Error("A project ID is required to create a enw experiment.");
+      }
+
       return {
         method: "POST",
         // prettier-ignore

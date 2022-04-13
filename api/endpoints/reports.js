@@ -46,40 +46,86 @@ const reports_api = {
       };
     },
     delete: (options = {}) => {
-      if (!options.audienceId) {
-        throw new Error("An audience ID is required to read an audience.");
+      if (!options.projectId) {
+        throw new Error("A project ID is required to delete a report.");
       }
 
+      if (!options.environmentKey) {
+        throw new Error("An environment key is required to delete a report.");
+      }
+
+      if (!options.reportKey) {
+        throw new Error("A report key is required to delete a report.");
+
+      }
       return {
-        method: "DEL",
+        method: "DELETE",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/audiences/${options?.audienceId ? options.audienceId : 0}`,
+        resource: `${config.apiURL_FlagsV1}/projects/${options?.projectId ? options.projectId : 0}/environments/${options?.environmentKey ? options.environmentKey : 0}/reports/${options?.reportKey ? options.reportKey : 0}`,
         params: {},
         body: null,
       };
     },
-    update: (options = {}) => {
-      if (!options.audienceId) {
-        throw new Error("An audience ID is required to read an audience.");
+    reset: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to reset report results.");
       }
 
-      if (!options.body) {
-        throw new Error(
-          "A JSON payload representing the properties to update the audience is required."
-        );
+      if (!options.environmentKey) {
+        throw new Error("An environment key is required reset report results.");
+      }
+
+      if (!options.reportKey) {
+        throw new Error("A report key is required reset report results.");
+
+      }
+      return {
+        method: "POST",
+        // prettier-ignore
+        resource: `${config.apiURL_FlagsV1}/projects/${options?.projectId ? options.projectId : 0}/environments/${options?.environmentKey ? options.environmentKey : 0}/reports/${options?.reportKey ? options.reportKey : 0}/reset-results`,
+        params: {},
+        body: null,
+      };
+    },
+    archive: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to archive a report.");
+      }
+
+      if (!options.environmentKey) {
+        throw new Error("An environment key is required to archive a report.");
       }
 
       return {
-        method: "PATCH",
+        method: "POST",
         // prettier-ignore
-        resource: `${config.apiURL_V2}/audiences/${options?.audienceId ? options.audienceId : 0}`,
+        resource: `${config.apiURL_FlagsV1}/projects/${options?.projectId ? options.projectId : 0}/environments/${options?.environmentKey ? options.environmentKey : 0}/reports/archive`,
         params: {},
         body: {
           ...options.body,
         },
       };
     },
-  },
+    unarchive: (options = {}) => {
+      if (!options.projectId) {
+        throw new Error("A project ID is required to unarchive a report.");
+      }
+
+      if (!options.environmentKey) {
+        throw new Error("An environment key is required to unarchive a report.");
+      }
+
+      return {
+        method: "POST",
+        // prettier-ignore
+        resource: `${config.apiURL_FlagsV1}/projects/${options?.projectId ? options.projectId : 0}/environments/${options?.environmentKey ? options.environmentKey : 0}/reports/unarchive`,
+        params: {},
+        body: {
+          ...options.body,
+        },
+      };
+    }
+  }
 };
 
 export default reports_api;
